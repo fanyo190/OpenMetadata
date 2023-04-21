@@ -28,7 +28,7 @@
     h6 {
       margin: 0px !important;
       border: none;
-      padding: 24px 0px 0px 0px !important;
+      padding: 24px 0px 0px 0px;
       color: @text-color;
     }
 
@@ -53,17 +53,21 @@
       font-weight: 600;
     }
 
-    h1[data-highlighted='true'],
-    h2[data-highlighted='true'],
-    h3[data-highlighted='true'],
-    h4[data-highlighted='true'],
-    h5[data-highlighted='true'],
-    h6[data-highlighted='true'] {
+    div[data-highlighted='true'] {
       background: #eeeaf8;
-      padding: 24px 8px !important;
       color: @primary-color;
       transition: ease-in-out;
-      margin-top: 8px !important;
+      border-left: 3px solid @primary-color;
+      padding-bottom: 12px !important;
+      margin-top: 12px;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        padding: 8px 0 0 !important;
+      }
     }
 
     a {
@@ -139,6 +143,9 @@
       color: @text-color;
       word-break: break-word;
       line-height: 20px;
+      &:first-child {
+        margin-top: 0px;
+      }
       &:last-child {
         margin-bottom: 0px;
       }
@@ -161,8 +168,8 @@
     .admonition {
       border-radius: 8px;
       border-left: 8px solid @admonition-border-color;
-      padding: 1px 16px 1px 48px;
-      margin: 15px 0 0px;
+      padding: 1px 16px 1px 48px !important;
+      margin: 16px;
       background-color: @markdown-bg-color;
       position: relative;
 
@@ -210,12 +217,12 @@
     }
     .code-copy-button {
       position: absolute;
-      top: 8px;
-      right: 8px;
+      top: 16px;
+      right: 40px;
       pointer-events: all;
       cursor: pointer;
       z-index: 1;
-      width: 16px;
+      width: 32px;
       opacity: 0;
       padding: 8px;
       background: @border-color;
@@ -226,7 +233,7 @@
       display: none;
       position: absolute;
       top: 16px;
-      right: 16px;
+      right: 40px;
       pointer-events: all;
       cursor: pointer;
       z-index: 2;

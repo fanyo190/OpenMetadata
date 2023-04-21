@@ -13,50 +13,40 @@
 
 import { PlusOutlined } from '@ant-design/icons';
 import { ObjectFieldTemplateProps } from '@rjsf/core';
-import { Space, Typography } from 'antd';
+import { Button, Col, Row } from 'antd';
 import classNames from 'classnames';
-import InfoPopover from 'components/common/InfoPopover/InfoPopover';
 import React, { Fragment, FunctionComponent } from 'react';
-import { Button } from '../buttons/Button/Button';
 
 export const ObjectFieldTemplate: FunctionComponent<ObjectFieldTemplateProps> =
   (props: ObjectFieldTemplateProps) => {
     return (
       <Fragment>
-        <div className="tw-flex tw-justify-between tw-items-center">
-          <Space size={0}>
+        <Row>
+          <Col span={8}>
             <label
               className="control-label"
               id={`${props.idSchema.$id}__title`}>
               {props.title}
             </label>
-            <p
-              className="field-description"
-              id={`${props.idSchema.$id}__description`}>
-              <InfoPopover
-                content={
-                  <Typography className="text-grey-muted">
-                    {props.description}
-                  </Typography>
-                }
-              />
-            </p>
-          </Space>
+          </Col>
+
           {props.schema.additionalProperties && (
-            <Button
-              className="tw-h-7 tw-w-7 tw-px-2"
-              data-testid={`add-item-${props.title}`}
-              id={`${props.idSchema.$id}__add`}
-              size="small"
-              theme="primary"
-              variant="contained"
-              onClick={() => {
-                props.onAddClick(props.schema)();
-              }}>
-              <PlusOutlined />
-            </Button>
+            <Col span={16}>
+              <Button
+                data-testid={`add-item-${props.title}`}
+                icon={
+                  <PlusOutlined style={{ color: 'white', fontSize: '12px' }} />
+                }
+                id={`${props.idSchema.$id}__add`}
+                size="small"
+                type="primary"
+                onClick={() => {
+                  props.onAddClick(props.schema)();
+                }}
+              />
+            </Col>
           )}
-        </div>
+        </Row>
         {props.properties.map((element, index) => (
           <div
             className={classNames('property-wrapper', {
