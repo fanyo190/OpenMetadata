@@ -91,7 +91,7 @@ const ServiceDocPanel: FC<ServiceDocPanelProp> = ({
         response = translation.value;
       }
 
-      if (isEnglishLanguage && fallbackTranslation.status === 'fulfilled') {
+      if (!isEnglishLanguage && fallbackTranslation.status === 'fulfilled') {
         response = fallbackTranslation.value;
       }
 
@@ -118,9 +118,6 @@ const ServiceDocPanel: FC<ServiceDocPanelProp> = ({
           inline: 'center',
         });
         element.setAttribute('data-highlighted', 'true');
-        setTimeout(() => {
-          element.setAttribute('data-highlighted', 'false');
-        }, 2000);
       }
     }
   }, [activeField, getActiveFieldName]);
