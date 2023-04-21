@@ -122,10 +122,10 @@ database:
   # the name of the JDBC driver, mysql in our case
   driverClass: ${DB_DRIVER_CLASS:-com.mysql.cj.jdbc.Driver}
   # the username and password
-  user: ${DB_USER:-openmetadata_user}
-  password: ${DB_USER_PASSWORD:-openmetadata_password}
+  user: ${DB_USER:-root}
+  password: ${DB_USER_PASSWORD:-123456}
   # the JDBC URL; the database is called openmetadata_db
-  url: jdbc:${DB_SCHEME:-mysql}://${DB_HOST:-localhost}:${DB_PORT:-3306}/${OM_DATABASE:-openmetadata_db}?allowPublicKeyRetrieval=true&useSSL=${DB_USE_SSL:-false}&serverTimezone=UTC
+  url: jdbc:${DB_SCHEME:-mysql}://${DB_HOST:-192.168.1.183}:${DB_PORT:-3306}/${OM_DATABASE:-dl-metadata-1.0-beta}?allowPublicKeyRetrieval=true&useSSL=${DB_USE_SSL:-false}&serverTimezone=UTC
 
 
 migrationConfiguration:
@@ -210,7 +210,7 @@ jwtTokenConfiguration:
   keyId: ${JWT_KEY_ID:-"Gb389a-9f76-gdjs-a92j-0242bk94356"}
 
 elasticsearch:
-  host: ${ELASTICSEARCH_HOST:-localhost}
+  host: ${ELASTICSEARCH_HOST:-192.168.1.183}
   port: ${ELASTICSEARCH_PORT:-9200}
   scheme: ${ELASTICSEARCH_SCHEME:-http}
   username: ${ELASTICSEARCH_USER:-""}
@@ -242,7 +242,7 @@ eventHandlerConfiguration:
 pipelineServiceClientConfiguration:
   # If we don't need this, set "org.openmetadata.service.clients.pipeline.noop.NoopClient"
   className: ${PIPELINE_SERVICE_CLIENT_CLASS_NAME:-"org.openmetadata.service.clients.pipeline.airflow.AirflowRESTClient"}
-  apiEndpoint: ${PIPELINE_SERVICE_CLIENT_ENDPOINT:-http://localhost:8080}
+  apiEndpoint: ${PIPELINE_SERVICE_CLIENT_ENDPOINT:-http://192.168.1.183:8080}
   metadataApiEndpoint: ${SERVER_HOST_API_URL:-http://localhost:8585/api}
   ingestionIpInfoEnabled: ${PIPELINE_SERVICE_IP_INFO_ENABLED:-false}
   hostIp: ${PIPELINE_SERVICE_CLIENT_HOST_IP:-""}
